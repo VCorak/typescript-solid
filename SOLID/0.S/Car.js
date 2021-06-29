@@ -2,12 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Car = void 0;
 var Car = /** @class */ (function () {
-    function Car(MAXIMUM_FUEL_CAPACITY) {
-        //it is convention to start property names in TypeScript with an underscore.
-        // If you want to known why, remove the underscore and see if your compiler is throwing you an error!
+    function Car(musicPlayer, engine, fuel) {
         this._miles = 0;
-        this.FUEL_MILEAGE = 10;
-        this._MAXIMUM_FUEL_CAPACITY = MAXIMUM_FUEL_CAPACITY;
+        this._musicPlayer = musicPlayer;
+        this._engine = engine;
+        this._fuel = fuel;
     }
     Object.defineProperty(Car.prototype, "miles", {
         get: function () {
@@ -16,19 +15,36 @@ var Car = /** @class */ (function () {
         enumerable: false,
         configurable: true
     });
-    Object.defineProperty(Car.prototype, "MAXIMUM_FUEL_CAPACITY", {
+    Object.defineProperty(Car.prototype, "musicPlayer", {
         get: function () {
-            return this._MAXIMUM_FUEL_CAPACITY;
+            return this._musicPlayer;
         },
         enumerable: false,
         configurable: true
     });
-    Car.prototype.drive = function (fuel, engine) {
-        if (engine.status === false || fuel.level <= 0) {
+    Object.defineProperty(Car.prototype, "engine", {
+        get: function () {
+            return this._engine;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Car.prototype, "fuel", {
+        get: function () {
+            return this._fuel;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Car.prototype.drive = function () {
+        if (this._engine.engineStatus === false || this.fuel.fuel <= 0) {
+            //what I am doing here is a good principle called "failing early"
+            // If you have some conditions you need to check, that will exclude most of the code in your function check that first
+            // This prevents your "happy path" of code to be deeply indented.
             return;
         }
-        fuel.level -= 1;
-        this._miles += engine.FUEL_MILEAGE;
+        this.fuel.fuel -= 1;
+        this._miles += this.fuel.FUEL_MILEAGE;
     };
     return Car;
 }());

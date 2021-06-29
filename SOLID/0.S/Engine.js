@@ -3,17 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Engine = void 0;
 var Engine = /** @class */ (function () {
     function Engine(FUEL_MILEAGE) {
-        this._status = false;
         this._engineStatus = false;
         this._FUEL_MILEAGE = FUEL_MILEAGE;
     }
-    Object.defineProperty(Engine.prototype, "status", {
-        get: function () {
-            return this._status;
-        },
-        enumerable: false,
-        configurable: true
-    });
     Object.defineProperty(Engine.prototype, "engineStatus", {
         get: function () {
             return this._engineStatus;
@@ -29,10 +21,10 @@ var Engine = /** @class */ (function () {
         configurable: true
     });
     Engine.prototype.turnEngineOn = function () {
-        this._status = true;
+        this._engineStatus = true;
     };
     Engine.prototype.turnEngineOff = function () {
-        this._status = false;
+        this._engineStatus = false;
     };
     return Engine;
 }());

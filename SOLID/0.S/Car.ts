@@ -1,35 +1,51 @@
-import {Fuel} from "./Fuel";
-import {Engine} from "./Engine";
+import { MusicPlayer } from "./MusicPlayer";
+import { Engine } from "./Engine";
+import { Fuel } from "./Fuel";
 
 export class Car {
-    //it is convention to start property names in TypeScript with an underscore.
-    // If you want to known why, remove the underscore and see if your compiler is throwing you an error!
+    private _musicPlayer:MusicPlayer;
+    private _engine:Engine;
+    private _fuel:Fuel;
 
-    private _miles : number = 0;
+    private _miles: number = 0;
 
-    //By changing this variable to readonly I have in essence created a property constant.
-    // the only subtle difference is that you can write once to the variable inside the constructor
-    private readonly _MAXIMUM_FUEL_CAPACITY: number;
-    private readonly FUEL_MILEAGE: number = 10;
 
-    constructor(MAXIMUM_FUEL_CAPACITY: number) {
-        this._MAXIMUM_FUEL_CAPACITY = MAXIMUM_FUEL_CAPACITY;
+    constructor(musicPlayer : MusicPlayer,engine : Engine,fuel : Fuel){
+
+        this._musicPlayer = musicPlayer;
+        this._engine = engine;
+        this._fuel = fuel;
     }
+
 
     get miles(): number {
         return this._miles;
     }
 
-    get MAXIMUM_FUEL_CAPACITY(): number {
-        return this._MAXIMUM_FUEL_CAPACITY;
+    get musicPlayer(): MusicPlayer {
+        return this._musicPlayer;
     }
 
-    drive(fuel : Fuel, engine : Engine) {
+    get engine(): Engine {
+        return this._engine;
+    }
 
-        if(engine.status === false || fuel.level <= 0) {
+    get fuel(): Fuel {
+        return this._fuel;
+    }
+
+    drive() {
+        if (this._engine.engineStatus === false || this.fuel.fuel <= 0) {
+            //what I am doing here is a good principle called "failing early"
+            // If you have some conditions you need to check, that will exclude most of the code in your function check that first
+            // This prevents your "happy path" of code to be deeply indented.
             return;
         }
-        fuel.level -= 1;
-        this._miles += engine.FUEL_MILEAGE;
+
+        this.fuel.fuel -= 1;
+
+        this._miles += this.fuel.FUEL_MILEAGE;
     }
+
+
 }
