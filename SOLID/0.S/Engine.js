@@ -4,11 +4,19 @@ exports.Engine = void 0;
 var Engine = /** @class */ (function () {
     function Engine(FUEL_MILEAGE) {
         this._status = false;
+        this._engineStatus = false;
         this._FUEL_MILEAGE = FUEL_MILEAGE;
     }
     Object.defineProperty(Engine.prototype, "status", {
         get: function () {
             return this._status;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Engine.prototype, "engineStatus", {
+        get: function () {
+            return this._engineStatus;
         },
         enumerable: false,
         configurable: true

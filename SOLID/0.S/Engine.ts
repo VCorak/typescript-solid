@@ -2,6 +2,7 @@ export class Engine {
 
     private _status: boolean = false;
     private readonly _FUEL_MILEAGE;
+    private _engineStatus: boolean = false;
 
 
     constructor(FUEL_MILEAGE: number) {
@@ -10,6 +11,10 @@ export class Engine {
 
     get status(): boolean {
         return this._status;
+    }
+
+    get engineStatus(): boolean {
+        return this._engineStatus;
     }
 
 
@@ -24,4 +29,5 @@ export class Engine {
     turnEngineOff() {
         this._status = false;
     }
+
 }
