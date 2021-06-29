@@ -7,7 +7,6 @@ export class Car {
 
     private _miles : number = 0;
 
-
     //By changing this variable to readonly I have in essence created a property constant.
     // the only subtle difference is that you can write once to the variable inside the constructor
     private readonly _MAXIMUM_FUEL_CAPACITY: number;
@@ -20,7 +19,6 @@ export class Car {
     get miles(): number {
         return this._miles;
     }
-
 
     get MAXIMUM_FUEL_CAPACITY(): number {
         return this._MAXIMUM_FUEL_CAPACITY;

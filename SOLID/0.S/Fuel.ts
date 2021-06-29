@@ -1,4 +1,4 @@
-export class Fuel{
+export class Fuel {
 
     private _fuel : number = 0;
 
