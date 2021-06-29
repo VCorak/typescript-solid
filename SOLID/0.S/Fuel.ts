@@ -15,6 +15,7 @@ export class Fuel {
         return this._fuel;
     }
 
+
     addFuel(fuel : number, MAXIMUM_FUEL_CAPACITY : number) {
         this._fuel = Math.min(fuel + this._fuel, MAXIMUM_FUEL_CAPACITY);
     }
