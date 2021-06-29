@@ -24,7 +24,6 @@ var Car = /** @class */ (function () {
         configurable: true
     });
     Car.prototype.drive = function (fuel, engine) {
-        console.log(engine.status);
         if (engine.status === false || fuel.level <= 0) {
             return;
         }

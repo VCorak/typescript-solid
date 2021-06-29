@@ -48,16 +48,16 @@ engineToggleElement.addEventListener('click', function () {
 // FUEL
 addFuelForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    fuel.addFuel(Number(addFuelInput.value), 100);
-    fuelLevelElement.innerText = fuel.toString();
+    fuel.addFuel(Number(addFuelInput.value), 60);
+    fuelLevelElement.innerText = fuel.fuel.toString();
 });
 setInterval(function () {
-    car.drive(1, 10);
+    car.drive(0, 1);
     //while it looks like both lines below are the same there is a subtle difference (you could put breakpoints here to see the difference):
     // this <cast> will only tell TypeScript that the value is a string, but the actual variable in JS is not changed in any way: it is in reality still a number
     milesElement.innerText = (car.miles);
     // This .toString() will actually convert the value in JavaScript from an integer to a string
-    fuelLevelElement.innerText = fuel.toString();
+    fuelLevelElement.innerText = fuel.fuel.toString();
     if (musicPlayer.musicLevel === 0) {
         audioElement.pause();
     }

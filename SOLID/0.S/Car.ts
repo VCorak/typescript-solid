@@ -24,8 +24,7 @@ export class Car {
         return this._MAXIMUM_FUEL_CAPACITY;
     }
 
-    drive(fuel : Fuel , engine : Engine) {
-        console.log(engine.status)
+    drive(fuel : Fuel, engine : Engine) {
 
         if(engine.status === false || fuel.level <= 0) {
             return;
