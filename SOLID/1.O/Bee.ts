@@ -14,6 +14,6 @@ export class Bee {
     }
 
     public makeSound(): string {
-        return 'Bzzzz'
+        return 'Bzzzz';
     }
 }
