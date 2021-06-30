@@ -58,7 +58,7 @@ class Admin implements PasswordAuth {
     }
 }
 
-// class GoogleBot implements GoogleAuth {}
+// class GoogleBot implements GoogleAuth
 
 class GoogleBot implements GoogleAuth {
     private _googleToken : string;

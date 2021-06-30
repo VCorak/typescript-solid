@@ -38,7 +38,7 @@ var Admin = /** @class */ (function () {
     };
     return Admin;
 }());
-// class GoogleBot implements GoogleAuth {}
+// class GoogleBot implements GoogleAuth
 var GoogleBot = /** @class */ (function () {
     function GoogleBot() {
     }
