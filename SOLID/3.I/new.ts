@@ -1,3 +1,8 @@
+interface PasswordAuth {
+    checkPassword(password: string) : boolean;
+    resetPassword();
+}
+
 interface FacebookAuth {
     setFacebookToken(token : string);
     getFacebookLogin(token : string) : boolean;
@@ -8,10 +13,6 @@ interface GoogleAuth {
     checkGoogleLogin(token : string) : boolean;
 }
 
-interface PasswordAuth {
-    checkPassword(password: string) : boolean;
-    resetPassword();
-}
 class User implements FacebookAuth, GoogleAuth, PasswordAuth {
     private _password : string = 'user';
     private _facebookToken : string;
@@ -58,19 +59,6 @@ class Admin implements PasswordAuth {
     }
 }
 
-// class GoogleBot implements GoogleAuth
-
-class GoogleBot implements GoogleAuth {
-    private _googleToken : string;
-
-    checkGoogleLogin(token: string): boolean {
-        return false;
-    }
-
-    setGoogleToken() {
-        throw new Error('Function not supported for admins');
-    }
-}
 
 const passwordElement = <HTMLInputElement>document.querySelector('#password');
 const typePasswordElement = <HTMLInputElement>document.querySelector('#typePassword');
@@ -91,8 +79,8 @@ document.querySelector('#login-form').addEventListener('submit', (event) => {
         if (user == guest) {
             user.setFacebookToken('secret_token_fb');
         }
-        user.setGoogleToken('secret_token_google');
-    }
+            user.setGoogleToken('secret_token_google');
+        }
 
     debugger;
 

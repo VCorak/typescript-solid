@@ -38,18 +38,6 @@ var Admin = /** @class */ (function () {
     };
     return Admin;
 }());
-// class GoogleBot implements GoogleAuth
-var GoogleBot = /** @class */ (function () {
-    function GoogleBot() {
-    }
-    GoogleBot.prototype.checkGoogleLogin = function (token) {
-        return false;
-    };
-    GoogleBot.prototype.setGoogleToken = function () {
-        throw new Error('Function not supported for admins');
-    };
-    return GoogleBot;
-}());
 var passwordElement = document.querySelector('#password');
 var typePasswordElement = document.querySelector('#typePassword');
 var typeGoogleElement = document.querySelector('#typeGoogle');
