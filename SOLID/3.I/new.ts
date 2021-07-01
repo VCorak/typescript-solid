@@ -79,8 +79,8 @@ document.querySelector('#login-form').addEventListener('submit', (event) => {
         if (user == guest) {
             user.setFacebookToken('secret_token_fb');
         }
-            user.setGoogleToken('secret_token_google');
-        }
+        user.setGoogleToken('secret_token_google');
+    }
 
     debugger;
 
