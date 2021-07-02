@@ -1,21 +1,22 @@
-var Oven = /** @class */ (function () {
-    function Oven() {
+// CLASSES
+var GasOven = /** @class */ (function () {
+    function GasOven() {
     }
-    Oven.prototype.lightGas = function () {
+    GasOven.prototype.turnOn = function () {
         setTimeout(function () {
             document.getElementById('target').innerHTML += "<p>" + new Date().getHours() + ":" + new Date().getMinutes() + " : THE GAS IS ON!</p>";
         }, 1000);
         console.log("THE GAS IS ON!"); //insert fart humor here
         this._isOn = true;
     };
-    Oven.prototype.extinguishGas = function () {
+    GasOven.prototype.turnOff = function () {
         setTimeout(function () {
             document.getElementById('target').innerHTML += "<p>" + new Date().getHours() + ":" + new Date().getMinutes() + " : THE GAS IS OFF!</p><hr>";
         }, 3000);
         console.log("THE GAS IS OFF!"); //insert fart humor here
         this._isOn = false;
     };
-    Oven.prototype.bake = function (item) {
+    GasOven.prototype.bake = function (item) {
         if (this._isOn) {
             setTimeout(function () {
                 document.getElementById('target').innerHTML += "<p>" + new Date().getHours() + ":" + new Date().getMinutes() + " : Now baking " + item + " !</p>";
@@ -29,27 +30,66 @@ var Oven = /** @class */ (function () {
             console.log("there is no gas!"); //insert fart humor here
         }
     };
-    return Oven;
+    GasOven.prototype.cook = function (item) {
+        this.turnOn();
+        this.bake(item);
+        this.turnOff();
+    };
+    return GasOven;
+}());
+var Stove = /** @class */ (function () {
+    function Stove() {
+    }
+    Stove.prototype.turnOn = function () {
+        setTimeout(function () {
+            document.getElementById('target').innerHTML += "<p>" + new Date().getHours() + ":" + new Date().getMinutes() + " : THE STOVE IS ON!</p>";
+        }, 1000);
+        console.log("THE STOVE IS ON!"); //insert fart humor here
+        this._isOn = true;
+    };
+    Stove.prototype.turnOff = function () {
+        setTimeout(function () {
+            document.getElementById('target').innerHTML += "<p>" + new Date().getHours() + ":" + new Date().getMinutes() + " : THE STOVE IS OFF!</p><hr>";
+        }, 3000);
+        console.log("THE STOVE IS OFF!"); //insert fart humor here
+        this._isOn = false;
+    };
+    Stove.prototype.bake = function (item) {
+        if (this._isOn) {
+            setTimeout(function () {
+                document.getElementById('target').innerHTML += "<p>" + new Date().getHours() + ":" + new Date().getMinutes() + " : Now baking " + item + " !</p>";
+            }, 2000);
+            console.log("Now baking " + item + "!");
+        }
+        else {
+            setTimeout(function () {
+                document.getElementById('target').innerHTML += "<p>" + new Date().getHours() + ":" + new Date().getMinutes() + " : there is no gas!</p>";
+            }, 2000);
+            console.log("there is no electricity!"); //insert fart humor here
+        }
+    };
+    Stove.prototype.cook = function (item) {
+        this.turnOn();
+        this.bake(item);
+        this.turnOff();
+    };
+    return Stove;
 }());
 var Restaurant = /** @class */ (function () {
-    function Restaurant(name) {
-        this._oven = new Oven();
+    function Restaurant(name, oven) {
         this._name = name;
+        this._oven = oven;
     }
-    Restaurant.prototype.Cook = function (item) {
-        this._oven.lightGas();
-        this._oven.bake(item);
-        this._oven.extinguishGas();
-    };
+    Object.defineProperty(Restaurant.prototype, "oven", {
+        get: function () {
+            return this._oven;
+        },
+        enumerable: false,
+        configurable: true
+    });
     return Restaurant;
 }());
-var bakery = new Restaurant("Bakery");
-bakery.Cook("cookies");
-//Now if we want to add a new restaurant with an ELECTRIC cooker, we are gonna be in a hot mess ...
-/*
-let bakery = new Restaurant("Bakery", new Oven());
-bakery.Cook("cookies");
-
-let crepery = new Restaurant("Crepery", new Stove());
-crepery.Cook("crepes");
- */ 
+var bakery = new Restaurant("Bakery", new GasOven());
+bakery.oven.cook("cookies");
+var crepery = new Restaurant("Crepery", new Stove());
+crepery.oven.cook("crepes");
