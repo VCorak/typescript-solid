@@ -46,7 +46,7 @@ class GasOven implements OvenInterface{
             console.log("there is no gas!");//insert fart humor here
         }
     }
-    
+
     cook(item){
         this.turnOn();
         this.bake(item);
@@ -100,9 +100,9 @@ class Stove implements OvenInterface {
 
 class Restaurant{
     private _name : string;
-    private _oven?:OvenInterface;
+    private _oven : OvenInterface;
 
-    constructor(name : string, oven:OvenInterface) {
+    constructor(name : string, oven : OvenInterface) {
         this._name = name;
         this._oven = oven;
     }
